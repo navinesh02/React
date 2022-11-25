@@ -1,10 +1,6 @@
 import React from "react";
 import createTheme from "@mui/material/styles";
-import dotedImg from "../../assets/images/doted.svg";
-import circleImg from "../../assets/images/circle.svg";
-import circleDarkImg from "../../assets/images/circleDark.svg";
-// import { useStyles } from "./login-styles";
-import { loginstyle } from "./style"
+import { loginstyle } from "./Style"
 import {
   Button,
   Card,
@@ -45,28 +41,28 @@ const Login = () => {
                 // className={classes.circleImgTop}
                 style = {loginstyle.circleImgTopSx}
 
-                src={circleImg}
+                src="images/circle.svg"
                 alt="circleImgTop"
               />
               <img
                 // className={classes.circleImgCenter}
                 style = {loginstyle.circleImgCenterSx}
 
-                src={circleDarkImg}
+                src="images/circleDark.svg"
                 alt="circleImgCenter"
               />
               <img
                 // className={classes.circleImgbottom}
                 style = {loginstyle.circleImgbottomSx}
 
-                src={circleImg}
+                src="images/circle.svg"
                 alt="circleImgbottom"
               />
             </Box>
             <img
               // className={classes.buldingImgbottom}
               style={ loginstyle.buldingImgbottomSx}
-              src={require("../../assets/images/bulding-crop.png")}
+              src="images/bulding-crop.png"
               alt="buldingImgbottom"
             />
           </Grid>
@@ -106,7 +102,7 @@ const Login = () => {
                   <img
                     // className={classes.dotedImgTop}
                     style = {{...loginstyle.dotedImgTopSx, display: {xs:"none"}}}
-                    src={dotedImg}
+                    src="images/doted.svg"
                     alt="dotedImgTop"
                   />
                 </Box>
@@ -157,7 +153,7 @@ const Login = () => {
                    sx={{...loginstyle.poweredBySx, mt: 0 }}>
                     <span sx={{ fontSize: 10 }}>Powered by</span>
                     <img
-                      src={require("../../assets/images/logo.png")}
+                      src="images/logo.png"
                       alt="logo"
                     />{" "}
                     Property Automate
@@ -180,7 +176,7 @@ const Login = () => {
                   <img
                   style = {{...loginstyle.dotedImgBottomSx, display: {xs:"none"}}}
                     // className={classes.dotedImgBottom}
-                    src={dotedImg}
+                    src="images/doted.svg"
                     alt="dotedImgBottom"
                   />
                 </Box>

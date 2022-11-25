@@ -70,3 +70,91 @@ Reassign a constant object
 
 * `Syntax: condition ? <expression if true> : <expression if false>`
 
+# Functional components
+* Components are independent and reusable bits of code. They serve the same purpose as JavaScript functions, but work in isolation and return 
+* A Function component also returns HTML
+
+# Props
+* Props are arguments passed into React components.
+* Props are passed to components via HTML attributes.
+* props stands for properties.
+* Props are pass data from one component to another, using parameters.
+
+# JSX
+* JSX stands for JavaScript XML.
+* JSX allows us to write HTML in React.
+* JSX makes it easier to write and add HTML in React.
+* JSX allows us to write HTML elements in JavaScript and place them in the DOM without any createElement()  and/or appendChild() methods.
+* JSX converts HTML tags into react elements.
+
+# State
+* The state is a built-in React object that is used to contain data or information about the component.
+* A component's state can change over time; whenever it changes, the component re-renders
+* State allows us to manage changing data in an application
+# Events 
+* HTML DOM events, React can perform actions based on user events.
+* React has the same events as HTML: click, change, mouseover etc.
+* React events are written in camelCase syntax: onClick instead of onclick.
+* React event handlers are written inside curly braces: onClick={shoot}  instead of onClick="shoot()"
+* Ex : `function Football() {`
+`  const shoot = () => {`
+`    alert("Great Shot!");}`
+
+ ` return (`
+`    <button onClick={shoot}>Take the shot!</button>`
+`  );}`
+
+`const root = ReactDOM.createRoot(document.getElementById('root'));`
+`root.render(<Football />);`
+
+# Conditional rendering 
+* Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like if or the conditional operator to create elements representing the current state, and let React update the UI to match them.
+
+# List 
+* In React, you will render lists with some type of loop.
+* The JavaScript map() array method is generally the preferred method
+* Lists are used to display data in an ordered format and mainly used to display menus on websites
+
+# Forms 
+* Handling forms is about how you handle the data when it changes value or gets submitted. 
+* In HTML, form data is usually handled by the DOM. In React, form data is usually handled by the components.
+* When the data is handled by the components, all the data is stored in the component state.
+
+# Router
+* React Router is a standard library for routing in React. It enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.
+
+# Hooks 
+* Hooks allow function components to have access to state and other React features. Because of this, class components are generally no longer needed.
+* Although Hooks generally replace class components, there are no plans to remove classes from React.
+* Hooks can only be called inside React function components.
+* Hooks can only be called at the top level of a component.
+* Hooks cannot be conditional
+* Note: Hooks will not work in React class components.
+
+### useState 
+* useState Hook allows us to track state in a function component.
+* State generally refers to data or properties that need to be tracking in an application
+* useState accepts an initial state and returns two values:
+ The current state.
+ A function that updates & read the state
+
+### useEffect
+* The useEffect Hook allows you to perform side effects in your components.
+* Some examples of side effects are: fetching data, directly updating the DOM, and timers.
+* useEffect accepts two arguments. The second argument is optional.
+* useEffect`(<function>, <dependency>)`
+
+### useContext 
+* React Context is a way to manage state globally.
+* It can be used together with the useState Hook to share state between deeply nested components more easily than ...
+* Context is primarily used when some data needs to be accessible by many components at different nesting levels.
+### useRef
+* The useRef is a hook that allows to directly create a reference to the DOM element in the functional component. Syntax: const refContainer = useRef(initialValue); 
+* The useRef returns a mutable ref object. 
+
+# useReducer
+* The useReducer Hook is similar to the useState Hook.
+* It allows for custom state logic.
+* If you find yourself keeping track of multiple pieces of state that rely on complex logic, useReducer may be useful.
+* syntax : `useReducer(<reducer>, <initialState>)`
+

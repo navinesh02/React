@@ -1,18 +1,7 @@
 import { createTheme } from "@mui/material/styles";
 
 export const theme = createTheme({
-  // components: {
-  //   MuiFilledInput: {
-  //     styleOverrides: {
-  //       root: {
-  //         backgroundColor: "green"
-  //       },
-  //       focused: {
-  //         backgroundColor: "yellow"
-  //       }
-  //     }
-  //   }
-  // },
+ 
   palette: {
     primary: {
       main: "#2C3060",
@@ -34,21 +23,6 @@ export const theme = createTheme({
       sidebarBg: "#333333",
       sidebarText: "#C1C5CB",
     },
-  },
-  shadows: [
-    "none",
-    "0px 1px 2px rgba(9, 30, 66, 0.2)",
-    "0px 1px 3px rgba(9, 30, 66, 0.12)",
-    "0px 2px 4px rgba(9, 30, 66, 0.08)",
-    "0px 1px 2px rgba(9, 30, 66, 0.2)",
-    "0px 1px 3px rgba(9, 30, 66, 0.12)",
-    "0px 2px 4px rgba(9, 30, 66, 0.08)",
-    "0px 1px 2px rgba(9, 30, 66, 0.2)",
-    "0px 1px 3px rgba(9, 30, 66, 0.12)",
-    "0px 2px 4px rgba(9, 30, 66, 0.08)",
-  ],
-  shape: {
-    borderRadius: 6,
   },
   typography: {
     fontFamily: "NunitoSans-Regular, sans-serif",
