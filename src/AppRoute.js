@@ -35,6 +35,9 @@ import Dashboard from "./screens/dashboard/Dashboard";
 import Login from "./screens/login/Login";
 import Layout from "./components/layout/Layout";
 import Properties from "./screens/properties/Properties";
+import CreateProperty from "./screens/createproperty/CreateProperty";
+import ViewProperties from "./screens/viewProperties";
+
 const AppRoute = () => {
 
   return (      
@@ -44,6 +47,8 @@ const AppRoute = () => {
         <Route path="user" element={<Layout />}>
          <Route path="dashboard" element={<Dashboard />} />
          <Route path="property" element={<Properties />} />
+         <Route path="createproperty" element = {<CreateProperty />}/>
+         <Route path="viewproperty" element={< ViewProperties/>} />
          </Route>
        </Routes>
        </BrowserRouter>

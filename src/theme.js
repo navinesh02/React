@@ -19,9 +19,6 @@ export const theme = createTheme({
       grayTransprent: "#00001F",
       grayTransprent2: "#000014",
       gray: "#98A0AC",
-      lightGray: "#E4E8EE",
-      sidebarBg: "#333333",
-      sidebarText: "#C1C5CB",
     },
   },
   typography: {
@@ -61,3 +58,5 @@ export const theme = createTheme({
     },
   },
 });
+
+export default {theme};

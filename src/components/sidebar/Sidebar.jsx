@@ -17,8 +17,6 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { Sidebarstyle } from "./Styles";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router-dom";
@@ -85,6 +83,8 @@ const Drawer = styled(MuiDrawer, {
 
 export default function Sidebar() {
   // const classes = useStyles();
+  const navigate = useNavigate();
+
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -132,9 +132,9 @@ export default function Sidebar() {
         <Divider />
         <List>
           <ListItem
-            // onClick={() => {
-            //   navigate("/user/dashboard");
-            // }}
+            onClick={() => {
+              navigate("/user/dashboard");
+            }}
             disablePadding
           >
             <ListItemButton>
@@ -160,7 +160,7 @@ export default function Sidebar() {
                 open
                   ? handleClickCollapse
                   : () => {
-                      // navigate("/user/companies");
+                      navigate("/user/createproperty");
                     }
               }
               sx={{
@@ -198,9 +198,9 @@ export default function Sidebar() {
                   <img src="/images/Leads.svg" alt="company" />
                 </ListItemIcon>
                 <ListItemText
-                  // onClick={() => {
-                  //   navigate("/user/companies");
-                  // }}
+                  onClick={() => {
+                    navigate("/user/createproperty");
+                  }}
                   primary="Menu 2"
                   sx={{ color: "#fff" }}
                 />

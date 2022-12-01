@@ -1,6 +1,7 @@
 import React from "react";
 import createTheme from "@mui/material/styles";
-import { loginstyle } from "./Style"
+import { useState } from "react";
+import { loginstyle } from "./Style";
 import {
   Button,
   Card,
@@ -11,57 +12,50 @@ import {
   Paper,
   Box,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   // const classes = useStyles();
-
+  const navigate = useNavigate();
+ 
   return (
     <div className="root">
-      <Box 
-      sx = {loginstyle.containerSx}
-      // className={classes.container} 
+      <Box
+        sx={loginstyle.containerSx}
       >
         <Grid container sx={{ marginTop: 0, paddingTop: 0 }}>
           <Grid
             item
-            sx={{...loginstyle.imageSectionSx,
+            sx={{
+              ...loginstyle.imageSectionSx,
               display: { xs: "none", md: "none", lg: "block" },
               paddingTop: 0,
             }}
             xs={0}
             sm={0}
             md={3}
-            // className={classes.imageSection}
           >
-            <Box 
-            // className={classes.circleImgGroup}
-            sx = {loginstyle.circleImgGroupSx}
+            <Box
+              sx={loginstyle.circleImgGroupSx}
             >
               <img
-                // className={classes.circleImgTop}
-                style = {loginstyle.circleImgTopSx}
-
+                style={loginstyle.circleImgTopSx}
                 src="images/circle.svg"
                 alt="circleImgTop"
               />
               <img
-                // className={classes.circleImgCenter}
-                style = {loginstyle.circleImgCenterSx}
-
+                style={loginstyle.circleImgCenterSx}
                 src="images/circleDark.svg"
                 alt="circleImgCenter"
               />
               <img
-                // className={classes.circleImgbottom}
-                style = {loginstyle.circleImgbottomSx}
-
+                style={loginstyle.circleImgbottomSx}
                 src="images/circle.svg"
                 alt="circleImgbottom"
               />
             </Box>
             <img
-              // className={classes.buldingImgbottom}
-              style={ loginstyle.buldingImgbottomSx}
+              style={loginstyle.buldingImgbottomSx}
               src="images/bulding-crop.png"
               alt="buldingImgbottom"
             />
@@ -72,9 +66,7 @@ const Login = () => {
             sm={12}
             md={12}
             lg={9}
-            // className={classes.formSection}
-            // sx = { loginstyle.formSectionSx}
-            sx={{...loginstyle.formSectionSx, paddingTop: 0 }}
+            sx={{ ...loginstyle.formSectionSx, paddingTop: 0 }}
           >
             <Grid sx={{ marginTop: 0, paddingTop: 0 }}>
               <Grid
@@ -91,37 +83,34 @@ const Login = () => {
                 sm={12}
                 md={12}
                 lg={11}
-                sx={{...loginstyle.signInFormSx, marginTop: 0, paddingTop: 0 }}
-                // className={classes.signInForm}
-                // sx = { loginstyle.signInFormSx}
+                sx={{ ...loginstyle.signInFormSx, marginTop: 0, paddingTop: 0 }}
+              
               >
-                <Box 
-                // className={classes.circleImgGroup}
-                sx = { loginstyle.circleImgGroupSx}
+                <Box
+                  sx={loginstyle.circleImgGroupSx}
                 >
                   <img
-                    // className={classes.dotedImgTop}
-                    style = {{...loginstyle.dotedImgTopSx, display: {xs:"none"}}}
+                    style={{
+                      ...loginstyle.dotedImgTopSx,
+                      display: { xs: "none" },
+                    }}
                     src="images/doted.svg"
                     alt="dotedImgTop"
                   />
                 </Box>
 
                 <Box
-                //  className={classes.signInCard}
-                sx = { loginstyle.signInCardSx}
-                 >
+                  sx={loginstyle.signInCardSx}
+                >
                   <Typography
-                    // className={classes.signIn}
-                    // sx = { loginstyle.signInSx}
-                    sx={{...loginstyle.signInSx, fontWeight: "bold" }}
+                  
+                    sx={{ ...loginstyle.signInSx, fontWeight: "bold" }}
                     variant="h6"
                   >
                     Sign In
                   </Typography>
-                  <Box 
-                  // className={classes.inputBar}
-                  sx = { loginstyle.inputBarSx}
+                  <Box
+                    sx={loginstyle.inputBarSx}
                   >
                     <TextField
                       sx={{ width: "100%" }}
@@ -130,52 +119,53 @@ const Login = () => {
                       placeholder="Enter Mobile Number / Email ID"
                     />
                   </Box>
-                  <Box 
-                  // className={classes.inputBar}
-                  sx = { loginstyle.inputBarSx}
+                  <Box
+                    sx={loginstyle.inputBarSx}
                   >
                     <TextField
                       sx={{ mt: 4, width: "100%" }}
                       label="Enter Password"
                       placeholder="Enter your password"
+
                     />
                   </Box>
                   <Typography
-                    // className={classes.forgetPassword}
-                    // sx = { loginstyle.forgetPasswordSx}
-                    sx={{...loginstyle.forgetPasswordSx, mt: 2, fontSize: 12, fontWeight: "bold" }}
+
+                    sx={{
+                      ...loginstyle.forgetPasswordSx,
+                      mt: 2,
+                      fontSize: 12,
+                      fontWeight: "bold",
+                    }}
                   >
                     Did you forget your password? <span>Click Here</span>
                   </Typography>
-                  <Box 
-                  // className={classes.poweredBy}
-                  // sx = { loginstyle.poweredBySx}
-                   sx={{...loginstyle.poweredBySx, mt: 0 }}>
+                  <Box
+
+                    sx={{ ...loginstyle.poweredBySx, mt: 0 }}
+                  >
                     <span sx={{ fontSize: 10 }}>Powered by</span>
-                    <img
-                      src="images/logo.png"
-                      alt="logo"
-                    />{" "}
-                    Property Automate
+                    <img src="images/logo.png" alt="logo" /> Property Automate
                   </Box>
                   <Button
-                    // onClick={onLoginBtn}
-                    // className={classes.loginBtn}
-                    
-                    sx={{...loginstyle.loginBtn, Margintop: "20px" }}
+
+                    sx={{ ...loginstyle.loginBtn, Margintop: "20px" }}
                     fullWidth
                     variant="contained"
+                    onClick={() => navigate("/user/dashboard")}
                   >
                     Log In
                   </Button>
                 </Box>
-                <Box 
-                // className={classes.circleImgGroup}
-                sx = { loginstyle.circleImgGroupSx}
+                <Box
+
+                  sx={loginstyle.circleImgGroupSx}
                 >
                   <img
-                  style = {{...loginstyle.dotedImgBottomSx, display: {xs:"none"}}}
-                    // className={classes.dotedImgBottom}
+                    style={{
+                      ...loginstyle.dotedImgBottomSx,
+                      display: { xs: "none" },
+                    }}
                     src="images/doted.svg"
                     alt="dotedImgBottom"
                   />

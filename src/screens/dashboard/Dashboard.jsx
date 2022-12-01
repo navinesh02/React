@@ -1,8 +1,17 @@
-import Header from "../../components/header/Header";
-// import { useStyles } from "./Header-Styles";
 import React from "react";
 import StatCard from "../../components/cards";
-import { Card, Divider, Grid, Typography } from "@mui/material";
+import {
+  Card,
+  Grid,
+  Typography,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TableRow,
+} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import ChartCard from "../../components/chartCard/ChartCard";
 import { Box } from "@mui/material";
 import Paper from "@mui/material/Paper";
@@ -10,11 +19,67 @@ import { styled } from "@mui/material/styles";
 import PropTypes from "prop-types";
 import Tabs from "@mui/material/Tabs";
 import ListItem from "@mui/material/ListItem";
-import SearchIcon from '@mui/icons-material/Search';
-import InputBase from '@mui/material/InputBase';
+import TextField from "@mui/material/TextField";
+import SearchIcon from "@mui/icons-material/Search";
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import { DashboardStyle } from "./Styles";
+import SpeedDial from "@mui/material/SpeedDial";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+
+// import SearchIcon from "@material-ui/icons/Search";
 
 import Tab from "@mui/material/Tab";
 
+const rows = [
+  createData("Water Leakage Repair", "Maintenance", "22 jan 22", "K-F01-U277"),
+  createData(
+    "Electricity Voltage Drop",
+    "Maintenance",
+    "22 jan 22",
+    "K-F01-U277"
+  ),
+  createData("Water Leakage Repair", "Maintenance", "22 jan 22", "K-F01-U277"),
+  createData(
+    "Electricity Voltage Drop",
+    "Maintenance",
+    "22 jan 22",
+    "K-F01-U277"
+  ),
+  createData("Water Leakage Repair", "Maintenance", "22 jan 22", "K-F01-U277"),
+  createData(
+    "Electricity Voltage Drop",
+    "Maintenance",
+    "22 jan 22",
+    "K-F01-U277"
+  ),
+];
+
+const table = [
+  createTd("Prop 011", "Tyons", "22", "02", "47%"),
+  createTd("Prop 012", "Rubix", "52", "14", "27%"),
+  createTd("Prop 013", "Phonix", "46", "34", "54%"),
+  createTd("Prop 014", "Thapar", "27", "76", "65%"),
+  createTd("Prop 015", "Marian", "29", "33", "23%"),
+  createTd("Prop 016", "Tyons", "43", "34", "34%"),
+  createTd("Prop 017", "Tyons", "87", "56", "21%"),
+  createTd("Prop 011", "Tyons", "22", "02", "47%"),
+  createTd("Prop 012", "Rubix", "52", "14", "27%"),
+  createTd("Prop 013", "Phonix", "46", "34", "54%"),
+];
+
+function createTd(
+  propertyId,
+  propertyName,
+  totelUnit,
+  occupeidUnit,
+  occupancy
+) {
+  return { propertyId, propertyName, totelUnit, occupeidUnit, occupancy };
+}
+function createData(name, type, date, id) {
+  return { name, type, date, id };
+}
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -120,6 +185,7 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Dashboard() {
   // const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const navigate = useNavigate();
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -196,11 +262,16 @@ export default function Dashboard() {
                   width: "50%",
                   padding: 2,
                   backgroundColor: "#F5F7FA",
+                  height: "30px",
                 }}
               >
                 <Box>
-                  <Typography>General Request</Typography>
-                  <Typography>15</Typography>
+                  <Typography variant="h6" component="h6">
+                    General Request
+                  </Typography>
+                  <Typography variant="h6" component="h6">
+                    12
+                  </Typography>
                 </Box>
                 <Box
                   sx={{
@@ -210,54 +281,124 @@ export default function Dashboard() {
                   }}
                 />
                 <Box>
-                  <Typography>Maintenance</Typography>
-                  <Typography>15</Typography>
+                  <Typography variant="h6" component="h6">
+                    Maintenance
+                  </Typography>
+                  <Typography variant="h6" component="h6">
+                    15
+                  </Typography>
                 </Box>
               </Card>
               <Box sx={{ width: "100%" }}>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                   <Tabs
+                    sx={DashboardStyle.tabSx}
                     value={value}
                     onChange={handleChange}
                     aria-label="basic tabs example"
                   >
-                    <Tab label="General Request" {...a11yProps(0)} />
-                    <Tab label="Maintenance" {...a11yProps(1)} />
+                    <Tab
+                      fontWeight={"bold"}
+                      label="General Request"
+                      {...a11yProps(0)}
+                    />
+                    <Tab
+                      fontWeight={"bold"}
+                      label="Maintenance"
+                      {...a11yProps(1)}
+                    />
                   </Tabs>
                 </Box>
-                <TabPanel value={value} index={0}>
-                  <Grid sx={{ marginTop: "0px" }} container spacing={2}>
-                    <Grid item xs={8}>
-                      <ListItem sx={{ padding: "5px" }}>
-                        <Typography variant="h6" component="h5">
-                          General Requests (12)
-                        </Typography>
-                      </ListItem>
-                    </Grid>
-                    <Grid item xs={4}>
-                      <ListItem
-                        sx={{ padding: "5px", justifyContent: "flex-end" }}
-                      >
-                        <Typography
-                          variant="subTitel1"
-                          component="h5"
-                          color="primary.light"
+                <Box sx={DashboardStyle.panelSx}>
+                  <TabPanel value={value} index={0}>
+                    <Grid
+                      sx={{ marginTop: "0px", padding: "5px !important" }}
+                      container
+                      spacing={2}
+                    >
+                      <Grid item xs={8}>
+                        <ListItem sx={{ padding: "5px" }}>
+                          <Typography variant="h6" component="h5">
+                            General Requests (12)
+                          </Typography>
+                        </ListItem>
+                      </Grid>
+                      <Grid item xs={4}>
+                        <ListItem
+                          sx={{ padding: "5px", justifyContent: "flex-end" }}
                         >
-                          View All
-                        </Typography>
-                      </ListItem>
-                    </Grid>
-                  </Grid>{" "}
-                  {/* <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search> */}
-                </TabPanel>
+                          <Typography
+                            variant="subTitel1"
+                            component="h5"
+                            color="primary.light"
+                          >
+                            View All
+                          </Typography>
+                        </ListItem>
+                      </Grid>
+                    </Grid>{" "}
+                    <TextField
+                      placeholder="Search Request ID, Request Name, Categoty"
+                      fullWidth={"100%"}
+                      sx={{
+                        "& .MuiInputBase-root": {
+                          height: 40,
+                          borderRadius: 2,
+                        },
+                      }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment>
+                            <IconButton>
+                              <SearchIcon />
+                            </IconButton>
+                          </InputAdornment>
+                        ),
+                      }}
+                    />
+                    <TableContainer
+                      sx={{
+                        height: "200px",
+                        overflow: "auto !important",
+                      }}
+                    >
+                      <Table sx={{ minWidth: 320 }} aria-label="simple table">
+                        <TableBody>
+                          {rows.map((row) => (
+                            <TableRow
+                              sx={{
+                                " td, th": { border: 0, padding: "6px" },
+                              }}
+                            >
+                              <TableCell component="th" scope="row">
+                                <Typography
+                                  variant="h6"
+                                  component="p"
+                                  color="#091B29"
+                                >
+                                  {row.name}
+                                </Typography>
+                                <Typography
+                                  color="#98A0AC"
+                                  variant="body"
+                                  component="p"
+                                >
+                                  {row.type} &#8226; {row.date} &#8226; {row.id}
+                                </Typography>
+                              </TableCell>
+                              <TableCell sx={{ width: "40px" }}>
+                                <img src="/images/pencil.svg" alt="pencil" />
+                              </TableCell>
+                              <TableCell sx={{ width: "40px" }}>
+                                <img src="/images/eye.svg" alt="pencil" />
+                              </TableCell>
+                            </TableRow>
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  </TabPanel>
+                </Box>
 
                 <TabPanel value={value} index={1}>
                   Maintenance{" "}
@@ -266,9 +407,71 @@ export default function Dashboard() {
             </Item>
           </Grid>
           <Grid item xs={6}>
-            <Item>xs=4</Item>
+            <Item sx={{ overflowY: "hidden", height: "430px" }}>
+              <Typography
+                variant="h6"
+                component="h5"
+                sx={{ marginBottom: "12px", color: "#333", fontWeight: "bold" }}
+                justifyContent={"flex-start"}
+                display={"flex"}
+              >
+                Occupancy By Property
+              </Typography>
+              <TableContainer sx={DashboardStyle.containerSx}>
+                <Table sx={{ minWidth: 320 }} aria-label="simple table">
+                  <TableHead sx={DashboardStyle.tableHeaderSx}>
+                    <TableRow>
+                      <TableCell>Property ID</TableCell>
+                      <TableCell>Property Name</TableCell>
+                      <TableCell>Total Unit</TableCell>
+                      <TableCell>Occupied Unit</TableCell>
+                      <TableCell>Occupancy %</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {table.map((row) => (
+                      <TableRow sx={DashboardStyle.tablerowSx}>
+                        <TableCell scope="row">
+                          <Typography variant="body1" component="p">
+                            {row.propertyId}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="body1" component="p">
+                            {row.propertyName}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="body1" component="p">
+                            {row.totelUnit}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="body1" component="p">
+                            {row.occupeidUnit}
+                          </Typography>
+                        </TableCell>
+                        <TableCell>
+                          <Typography variant="body1" component="p">
+                            {row.occupancy}
+                          </Typography>
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                </Table>
+              </TableContainer>
+            </Item>
           </Grid>
         </Grid>
+        <Box sx={{ flexGrow: 1 }}>
+          <SpeedDial
+            ariaLabel="SpeedDial basic example"
+            sx={DashboardStyle.speeddialSx}
+            icon={<SpeedDialIcon />}
+            onClick={() => navigate("/user/createproperty")}
+          ></SpeedDial>
+        </Box>
       </Box>
     </div>
   );

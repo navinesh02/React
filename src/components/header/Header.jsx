@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useStyles } from "./Styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -9,9 +9,19 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Avatar from "@mui/material/Avatar";
 import { Headerstyle } from "./Styles";
-import { Divider, Grid } from "@mui/material";
+import { Divider, Grid, Menu } from "@mui/material";
+import ProfileDisplay from "../profileDisplay";
 
 export default function Header() {
+  // const [onHoverContent, setOnHoverContent] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(false);
+  const open = anchorEl;
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(false);
+  };
   return (
     <>
       <Box sx={{ height: "64px" }}>
@@ -97,9 +107,15 @@ export default function Header() {
                         </Typography>
                       </Box>
                       <Box
-                      // onClick= {od}
+                        //  onMouseEnter={() => setOnHoverContent(true)}
+                        // onMouseLeave={() => setOnHoverContent(false)}
+                        onClick={handleClick}
                       >
                         <img src="/images/arrrow.png" alt="arrow" />
+
+                        <Box>
+                          {/* {onHoverContent === true && <ProfileDisplay />} */}
+                        </Box>
                       </Box>
                     </Box>
                   </Grid>
@@ -109,6 +125,24 @@ export default function Header() {
           </Toolbar>
         </AppBar>
       </Box>
+      <Menu
+        id="demo-positioned-menu"
+        aria-labelledby="demo-positioned-button"
+        anchorEl={anchorEl}
+        open={open}
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        transformOrigin={{
+          vertical: "top",
+          horizontal: "left",
+        }}
+        sx={{padding:"0px !important"}}
+      >
+        <ProfileDisplay />
+      </Menu>
     </>
   );
 }

@@ -1,3 +1,5 @@
+import {theme} from "../../theme"
+
 export const loginstyle = {
     containerSx: {
         height: "100vh",
@@ -121,5 +123,10 @@ export const loginstyle = {
          height: "165px",
          zIndex: 1,
        },
+       loginBtn:{
+        backgroundColor:theme.palette.primary.light,
+        font:"NunitoSans-Regular"
+    
+      },
          
 };
