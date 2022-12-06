@@ -1,4 +1,4 @@
-import theme from "../../theme";
+import { theme } from "../../theme";
 
 export const DashboardStyle = {
   tableHeaderSx: {
@@ -7,7 +7,7 @@ export const DashboardStyle = {
       padding: "12px 10px",
       marginBottom: "10px",
       borderRadius: "3px",
-      border:"3px",
+      border: "3px",
       color: "#4E5A6B",
       font: "normal normal 600 12px/16px NunitoSans-Regular",
     },
@@ -27,25 +27,46 @@ export const DashboardStyle = {
   },
   tabSx: {
     "& .Mui-selected": {
-      color: theme.theme.palette.primary.light + " !important",
+      color: theme.palette.primary.light + " !important",
       font: "normal normal 600 12px/16px NunitoSans-Regular",
     },
     "& .MuiTab-root": {
-      color: theme.theme.palette.background.gray,
+      color: theme.palette.background.gray,
       font: "normal normal bold 14px/19px NunitoSans-Bold !important",
       textTransform: "capitalize !important",
       // border: "2px solid "+theme.palette.primary.light
     },
   },
-  containerSx:{
+  containerSx: {
     marginTop: "8px",
     height: "414px",
     overflow: "auto !important",
   },
-  tablerowSx:{
+  tablerowSx: {
     "& td p": {
       font: "normal normal 600 16px/16px NunitoSans-SemiBold",
     },
-  }
+  },
+  cardSx1: {
+    [theme.breakpoints.between("xs", 'md')]: {
+      width: "230px !important",
+    },
+  },
+  cardSx2:{
+    [theme.breakpoints.only("xs")]: {
+      marginBottom:"40px",
+    },
+  },
+  
+paperSx:{
+  display: { xs: "block",sm:'none',md:'none',lg:'none' },
+  position: "fixed",
+  zIndex:99
+  // backgroundColor: " #333"
 
+},
+bottomSx:{
+  backgroundColor:theme.palette.background.darkBg,
+
+}
 };

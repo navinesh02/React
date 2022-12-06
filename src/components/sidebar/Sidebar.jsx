@@ -17,11 +17,14 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
 import { Sidebarstyle } from "./Styles";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router-dom";
 import { Collapse } from "@mui/material";
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
+
 // import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 // import ExpandLessIcon from '@mui/icons-material/ExpandLess';
 import { useState } from "react";
@@ -106,8 +109,12 @@ export default function Sidebar() {
   };
 
   return (
-   
-      <Drawer variant="permanent" sx={{ marginRight: "25px" }} open={open}>
+    <Box>
+      <Drawer
+        variant="permanent"
+        sx={{ marginRight: "25px", ...Sidebarstyle.rootSx  }}
+        open={open}
+      >
         <DrawerHeader>
           <Typography color="#fff" sx={{ marginRight: "20px" }} component="h6">
             Property Manager For <br />
@@ -236,7 +243,6 @@ export default function Sidebar() {
           </Collapse>
         </List>
       </Drawer>
-    
-  
+    </Box>
   );
 }

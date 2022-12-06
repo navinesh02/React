@@ -15,6 +15,10 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
+import {
+  ListItem,
+  Divider,
+} from "@mui/material";
 import Fade from "@mui/material/Fade";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -23,6 +27,15 @@ import React from "react";
 import { PropertiesStyle } from "./Style";
 import { useNavigate } from "react-router-dom";
 // import Floors from 'public/images/card/floors.png'
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import RestoreIcon from "@mui/icons-material/Restore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import Paper from "@mui/material/Paper";
+import InputText from "../../components/input/InputText";
 
 export default function Properties() {
   const table = [
@@ -136,7 +149,6 @@ export default function Properties() {
   };
   const navigate = useNavigate();
 
-
   function createTd(
     propertyId,
     propertyName,
@@ -167,34 +179,23 @@ export default function Properties() {
         </Stack>
       </Card>
       <Grid container>
-        <Grid item>
+        <Grid item xs={10} sm={11} md={12} lg={12}>
           <Card sx={PropertiesStyle.cardSx}>
             <Grid container spacing={2}>
               <Grid item xs={10}>
-                <TextField
-                  placeholder="Search Properties"
-                  //   fullWidth={"100%"}
-                  sx={{
-                    "& .MuiInputBase-root": {
-                      height: 40,
-                      borderRadius: 2,
-                    },
-                  }}
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment>
-                        <IconButton>
-                          <SearchIcon />
-                        </IconButton>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
+                <ListItem sx={{ padding: "5px", width:"190px", ...PropertiesStyle.textSx}}>
+                  <InputText
+                    type="text"
+                    placeholder={"Search Properties"}
+                    startAdornment={<SearchIcon sx={{ color: "#98A0AC" }} />}
+                  />
+                </ListItem>
               </Grid>
               <Grid item xs={2}>
-                <Box sx={{ justifyContent: "end", display: "flex" }}>
-                  <img src="/images/filter.svg" alt={"fillter"} />
-                </Box>
+                <ListItem sx={{ padding: "5px", justifyContent: "flex-end" }}>
+                 
+                <img src="/images/filter.svg" alt={"fillter"} />
+                </ListItem>
               </Grid>
             </Grid>
             <TableContainer sx={PropertiesStyle.tableContainerSx}>
@@ -211,18 +212,25 @@ export default function Properties() {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {table.map((row) => (
-                    <TableRow sx={PropertiesStyle.tablerowsx}>
-                      <TableCell scope="row"  
-                      onClick={() => {
-                        navigate("/user/viewproperty");
-                      }}  >
-                        <Typography variant="body1" component="p">
+                  {table.map((row, index) => (
+                    <TableRow sx={PropertiesStyle.tableRowSx} key={index}>
+                      <TableCell scope="row"
+                        onClick={() => {
+                          navigate("/user/viewproperty");
+                        }}>
+                        <Typography
+                          variant="body1"
+                          component="p"
+                        >
                           {row.propertyId}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography variant="body1" component="p">
+                        <Typography
+                          variant="body1"
+                          component="p"
+                         
+                        >
                           {row.propertyName}
                         </Typography>
                       </TableCell>
@@ -269,27 +277,35 @@ export default function Properties() {
                       </TableCell>
                       <TableCell>
                         <IconButton
-                          id="fade-button"
-                          aria-controls={open ? "fade-menu" : undefined}
-                          aria-haspopup="true"
+                          aria-label="more"
+                          id="long-button"
+                          aria-controls={open ? "long-menu" : undefined}
                           aria-expanded={open ? "true" : undefined}
+                          aria-haspopup="true"
                           onClick={handleClick}
                         >
                           <MoreVertIcon sx={{ color: "#98A0AC" }} />
                         </IconButton>
                         <Menu
-                          sx={PropertiesStyle.paperSx}
-                          id="fade-menu"
+                          sx={PropertiesStyle.menuItemSx}
+                          id="long-menu"
                           MenuListProps={{
-                            "aria-labelledby": "fade-button",
+                            "aria-labelledby": "long-button",
                           }}
                           anchorEl={anchorEl}
                           open={open}
                           onClose={handleClose}
-                          TransitionComponent={Fade}
+                          PaperProps={{
+                            style: {
+                              maxHeight: "140px",
+                              width: "92px",
+                            },
+                          }}
                         >
                           <MenuItem onClick={handleClose}>Edit</MenuItem>
+                          <Divider />
                           <MenuItem onClick={handleClose}>Inactive</MenuItem>
+                          <Divider />
                           <MenuItem onClick={handleClose}>Active</MenuItem>
                         </Menu>
                       </TableCell>
@@ -301,6 +317,54 @@ export default function Properties() {
           </Card>
         </Grid>
       </Grid>
+      <Paper
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          ...PropertiesStyle.paperSx,
+        }}
+        elevation={3}
+      >
+        <BottomNavigation sx={PropertiesStyle.bottomSx}>
+          <BottomNavigationAction
+            sx={{
+              color: "#fff",
+              backgroundColor: "#5078E1",
+              height: "39px",
+              borderRadius: "23px",
+              marginTop: "7px",
+              maxWidth: "37px",
+              minWidth: "10px",
+              marginRight: "34px",
+              justifyContent: "center",
+            }}
+            label="Recents"
+            icon={<DashboardIcon />}
+            onClick={() => {
+              navigate("/user/dashboard");
+            }}
+          />
+          {/* <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} /> */}
+          <ListItemIcon
+            sx={{
+              color: "#fff",
+              height: "39px",
+              borderRadius: "23px",
+              marginTop: "7px",
+              maxWidth: "37px",
+              minWidth: "10px",
+              justifyContent: "center",
+            }}
+            onClick={() => {
+              navigate("/user/createproperty");
+            }}
+          >
+            <img src="/images/Leads.svg" alt="company" />
+          </ListItemIcon>
+        </BottomNavigation>
+      </Paper>
     </>
   );
 }

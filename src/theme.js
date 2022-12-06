@@ -52,7 +52,7 @@ export const theme = createTheme({
       lineHeight: 1.5,
     },
     h6: {
-      fontSize: 16,
+      fontSize: 14,
       fontWeight: 600,
       lineHeight: 1.5,
     },

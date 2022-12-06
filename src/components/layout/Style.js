@@ -1,3 +1,4 @@
+import { theme } from "../../theme"
 
 export const Layoutstyle = {
     rootSx: {
@@ -9,6 +10,10 @@ export const Layoutstyle = {
       sidebarSx: {
         width: "68px",
         height: "auto",
+        [theme.breakpoints.only("xs")]: {
+          width: "0px !important",
+        },
+
       },
       mainContentSx: {
         width: "100%",

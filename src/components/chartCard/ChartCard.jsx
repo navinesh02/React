@@ -14,7 +14,7 @@ export default function ChartCard(props) {
     return(
         <>
         <Card
-         sx= {{padding: 1}}
+         sx= {Chartstyle.cardSx}
         >
         <Grid container spacing={2}>
           <Grid item xs={10}>

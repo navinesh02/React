@@ -10,6 +10,7 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Divider,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import ChartCard from "../../components/chartCard/ChartCard";
@@ -26,6 +27,13 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import { DashboardStyle } from "./Styles";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import RestoreIcon from "@mui/icons-material/Restore";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import ArchiveIcon from "@mui/icons-material/Archive";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import ListItemIcon from "@mui/material/ListItemIcon";
 
 // import SearchIcon from "@material-ui/icons/Search";
 
@@ -234,11 +242,11 @@ export default function Dashboard() {
   ];
 
   return (
-    <div style={{ padding: 20 }}>
+    <Box  style={{ padding:" 20px 20px" }}>
       <Grid container spacing={2}>
         {data?.map((_item) => {
           return (
-            <Grid item xs={6} sm={6} lg={1.5} md={4}>
+            <Grid item xs={6} sm={3} lg={1.5} md={3} xl={2}>
               <StatCard {..._item} />
             </Grid>
           );
@@ -247,25 +255,28 @@ export default function Dashboard() {
       <Box marginTop={2}>
         <Grid container spacing={2}>
           {chartDetails.map((chart) => (
-            <Grid key={chart.name} item xs={10} md={6} lg={3}>
+            <Grid key={chart.name} item xs={10} sm={12} md={12} lg={3}>
               <ChartCard details={chart} />
             </Grid>
           ))}
         </Grid>
         <Grid container marginTop={2} spacing={2}>
-          <Grid item xs={6}>
+          <Grid item xs={12} lg={6} md={6} sm={6}>
             <Item>
               <Card
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
                   width: "50%",
-                  padding: 2,
+                  padding: 0.5,
                   backgroundColor: "#F5F7FA",
-                  height: "30px",
+                  height: "50px",
+                  ...DashboardStyle.cardSx1
                 }}
               >
-                <Box>
+                <Grid container>
+                     <Grid item xs={6} sm={6} lg={5} md={6}>
+                     <Box>
                   <Typography variant="h6" component="h6">
                     General Request
                   </Typography>
@@ -273,11 +284,14 @@ export default function Dashboard() {
                     12
                   </Typography>
                 </Box>
+                </Grid>
+                <Grid item xs={6} sm={6} lg={5} md={6}>
+
                 <Box
                   sx={{
                     borderRight: "1px solid #5C86CB2E",
-                    marginTop: "9px",
-                    marginBottom: "9px",
+                    // marginTop: "9px",
+                    // marginBottom: "9px",
                   }}
                 />
                 <Box>
@@ -288,7 +302,9 @@ export default function Dashboard() {
                     15
                   </Typography>
                 </Box>
-              </Card>
+              </Grid>
+                </Grid>
+               </Card>
               <Box sx={{ width: "100%" }}>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                   <Tabs
@@ -338,7 +354,7 @@ export default function Dashboard() {
                       </Grid>
                     </Grid>{" "}
                     <TextField
-                      placeholder="Search Request ID, Request Name, Categoty"
+                      placeholder="Search Request ID, Request Name, Category"
                       fullWidth={"100%"}
                       sx={{
                         "& .MuiInputBase-root": {
@@ -406,8 +422,8 @@ export default function Dashboard() {
               </Box>
             </Item>
           </Grid>
-          <Grid item xs={6}>
-            <Item sx={{ overflowY: "hidden", height: "430px" }}>
+          <Grid item  xs={12} lg={6} md={6} sm={6}>
+            <Item sx={{ overflowY: "hidden", height: "425px",...DashboardStyle.cardSx2 }}>
               <Typography
                 variant="h6"
                 component="h5"
@@ -473,6 +489,57 @@ export default function Dashboard() {
           ></SpeedDial>
         </Box>
       </Box>
-    </div>
+      <Paper
+        sx={{
+          position: "fixed",
+          bottom: 0,
+          left: 0,
+          right: 0,
+          ...DashboardStyle.paperSx,
+        }}
+        elevation={3}
+      >
+        <BottomNavigation sx={DashboardStyle.bottomSx}>
+          <BottomNavigationAction
+            sx={{
+              color: "#fff",
+              backgroundColor: "#5078E1",
+              height: "39px",
+              borderRadius:"23px",
+              marginTop: "7px",
+              maxWidth: "37px",
+              minWidth:"10px",
+              marginRight:"34px",
+              justifyContent: "center",
+            }}
+            label="Recents"
+            icon={<DashboardIcon />}
+            onClick={() => {
+              navigate("/user/dashboard");
+            }}
+           
+          />
+          {/* <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} /> */}
+          <ListItemIcon
+                sx={{
+                  color: "#fff",
+              height: "39px",
+              borderRadius:"23px",
+              marginTop: "7px",
+              maxWidth: "37px",
+              minWidth:"10px",
+              justifyContent: "center",
+            }}
+            onClick={() => {
+              navigate("/user/createproperty");
+            }}
+              >
+                <img src="/images/Leads.svg" alt="company" />
+              </ListItemIcon>
+        </BottomNavigation>
+      </Paper>
+    
+    </Box>
+    
   );
 }

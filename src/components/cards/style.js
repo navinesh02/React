@@ -3,7 +3,7 @@ import React from "react";
 
 export const cardstyle = {
   cardSx: {
-    width: "100%",
+    width: "120px",
     height: "100%",
     padding:"1px"
   },

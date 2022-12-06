@@ -142,6 +142,10 @@ export const CreatePropertyStyle = {
       font: "normal normal 600 11px/16px NunitoSans-bold !important",
 
     }
-  }
+  },
+  boxSx1:{
+    display: { xs: "none",sm:'none',md:'none',lg:'none' },
+  },
+  
  
 };

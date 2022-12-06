@@ -283,7 +283,7 @@ export default function ViewProperties() {
                           Email Address :
                         </InputLabel>
                         <Typography component="h6" variant="h6">
-                          mail@propertyautomate.com
+                          mail@property.com
                         </Typography>
                       </Grid>
                     </Grid>

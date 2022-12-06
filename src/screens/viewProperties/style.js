@@ -1,3 +1,5 @@
+import { theme } from "../../theme";
+
 export const ViewPropertystyle = {
   mainCardSx: {
     margin: "18px 15px",
@@ -38,7 +40,11 @@ export const ViewPropertystyle = {
     margin: "5px 10px 0px 3px",
     borderRadius: "8px",
     padding: "14px",
-    height:"170px"
+    height:"180px",
+    [theme.breakpoints.only("xs")]: {
+      height: "200px",
+      width:"165px"
+    },
   },
 
   infoCardSx: {
@@ -47,6 +53,12 @@ export const ViewPropertystyle = {
     margin: "5px 10px 10px 3px",
     borderRadius: "8px",
     padding: "14px",
-    height:"170px"
+    height:"180px",
+    [theme.breakpoints.only("xs")]: {
+      height: "300px",
+      width:"160px",
+      // marginRight:"10px"
+
+    },
   },
 };

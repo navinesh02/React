@@ -26,6 +26,7 @@ import CheckOutlined from "@mui/icons-material/CheckOutlined";
 import { useNavigate } from "react-router-dom";
 import CheckIcon from "@mui/icons-material/Check";
 import BasicAlerts from "../../components/alert/alert";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 export default function CreateProperty() {
   const [value, setValue] = useState(
@@ -42,16 +43,15 @@ export default function CreateProperty() {
   };
   // const [openAlert, setOpenAlert] = useState(false);
   const [open, setOpen] = React.useState(false);
-  
-  const saveProperty = (value) => {
-    debugger;
-    setOpen(value);
-  };
 
-  setTimeout(() => {
-    navigate("/user/property")  
-    setOpen(false);
-  }, 5000);
+  const saveProperty = (value) => {
+    setOpen(value);
+    // navigate("/user/property")
+    setTimeout(() => {
+      setOpen(false);
+      navigate("/user/property");
+    }, 5000);
+  };
 
   const selectList = [
     {
@@ -90,7 +90,7 @@ export default function CreateProperty() {
   ];
 
   return (
-    <>
+    <Box>
       <Card>
         <Stack direction="row">
           <IconButton
@@ -146,7 +146,7 @@ export default function CreateProperty() {
               >
                 {/* <InputText /> */}
                 {selectList.map((select, index) => (
-                  <Grid key={index} item xs={3}>
+                  <Grid key={index}  item xs={12} md={6} lg={3}>
                     {/* <InputText
                       label={select.label}
                     /> */}
@@ -525,6 +525,9 @@ export default function CreateProperty() {
         message={"Property created successfully"}
         severity={"success"}
       />
-    </>
-  );
+      <Box  sx={CreatePropertyStyle.boxSx1}>
+      <Sidebar />
+
+      </Box>
+      </Box>  );
 }
