@@ -25,33 +25,38 @@ const Login = () => {
       password: "",
     },
   });
-  const handeleChange = (key, value) => {
+  const handleChange = (key, value) => {
     const error = data?.error;
     error[key] = "";
     setData({ ...data, [key]: value, error });
   };
-  const validateForm = () => {
+  const handlesubmit = () => {
+    let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     var isValid = true;
     const error = data?.error;
-    if (data?.email?.length === 0) {
+    if (data?.email.length === 0) {
       isValid = false;
-      error.email = "Email is Required";
+      error.email = "Email Id is Required";
+    }
+    if (data?.email && regexEmail.test(data?.email) == false) {
+      isValid = false;
+      error.email = "Email Id is Required";
     }
     if (data?.password?.length === 0) {
       isValid = false;
       error.password = "Password is Required";
     }
+    if (data?.email && regexEmail.test(data?.email) == true && data?.password) {
+      navigate("/user/dashboard");
+    }
 
     setData({ ...data, error });
     return isValid;
   };
-  const handlesubmit = () => {
-    if (validateForm()) {
-      navigate("/user/dashboard");
-    } else {
-      return false;
-    }
-  };
+  // const handlesubmit = () => {
+  //   if (validateForm()) {
+  //   }
+  // };
 
   return (
     <div className="root">
@@ -140,7 +145,7 @@ const Login = () => {
                       label="Mobile Number / Email ID"
                       placeholder="Enter Mobile Number / Email ID"
                       helperText={data?.error?.email}
-                      onChange={(e) => handeleChange("email", e.target.value)}
+                      onChange={(e) => handleChange("email", e.target.value)}
                       type={"email"}
                       error={data?.error?.email ? true : false}
                     />
@@ -151,9 +156,7 @@ const Login = () => {
                       label="Enter Password"
                       placeholder="Enter your password"
                       helperText={data?.error?.password}
-                      onChange={(e) =>
-                        handeleChange("password", e.target.value)
-                      }
+                      onChange={(e) => handleChange("password", e.target.value)}
                       error={data?.error?.password ? true : false}
                       type={"password"}
                     />
