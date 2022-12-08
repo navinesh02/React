@@ -15,5 +15,3 @@
 - [ ] To add the default value for the props of the component
 - [ ] Use comments to explain why you did something, not how you did it. If you find yourself explaining how you did something, then spend more time writing descriptive functions, methods, and filenames that are self-explanatory.Write comments that are informative, explanatory and offer clarification
 - [ ] Create multiple files instead of writing a big file. (fix to small functionality for each file) - Each with a single responsibility. Lines of code shouldn't exceed ~400
-
-
