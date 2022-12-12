@@ -12,8 +12,8 @@ export const RolesCardStyle = {
     padding: "4px 4px 4px 4px",
   },
   Box2Sx: {
-    display:'flex',
-     justifyContent: 'center',
-      alignItems:'center'
-  }
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
 };

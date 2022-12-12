@@ -2,14 +2,12 @@ export const ProfileStyle = {
   cardSx: {
     width: "350px",
     height: "473px",
-    // px: 1,
-    // py: 2,
-    padding:"10px",
-    boxShadow:"none",
+    padding: "10px",
+    boxShadow: "none",
     borderRadius: "8px",
   },
   boxSx: {
-    paddingBottom:"0px  !important",
+    paddingBottom: "0px  !important",
     "& .MuiMenu-list": {
       padding: "0px !important ",
     },

@@ -1,16 +1,21 @@
 import React from "react";
 import InputLabel from "@mui/material/InputLabel";
-
+import PropTypes from "prop-types";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
+import Select from "@mui/material/Select";
 import { CustomStyle } from "./style";
 import { useState } from "react";
 
 export default function CustomSelect(props) {
-  const { label, defaultValue, options } = props;
+  const { label = "", defaultValue = "", options = "" } = props;
   const [selectedValue, setSelectedValue] = useState(defaultValue);
 
+  CustomSelect.propTypes = {
+    label: PropTypes.string,
+    defaultValue: PropTypes.string,
+    options: PropTypes.string,
+  };
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
@@ -22,7 +27,7 @@ export default function CustomSelect(props) {
       <FormControl fullWidth>
         <Select
           sx={CustomStyle.textfieldSx}
-            onChange={handleChange}
+          onChange={handleChange}
           value={selectedValue}
         >
           <MenuItem value={""}>None</MenuItem>
@@ -31,7 +36,7 @@ export default function CustomSelect(props) {
               <MenuItem key={index} value={option.value}>
                 {option.key}
               </MenuItem>
-            ))} 
+            ))}
         </Select>
       </FormControl>
     </>

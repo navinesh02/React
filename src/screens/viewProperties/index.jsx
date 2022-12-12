@@ -92,7 +92,12 @@ export default function ViewProperties() {
           >
             <ChevronLeftIcon fontSize="small" />
           </IconButton>{" "}
-          <Typography component="h1" variant="h6" margin={"10px 0 7px 10px"}>
+          <Typography
+            component="h1"
+            variant="h6"
+            fontWeight={"bold"}
+            margin={"10px 0 7px 10px"}
+          >
             Rubix Appartment{" "}
           </Typography>
         </Stack>
@@ -111,7 +116,7 @@ export default function ViewProperties() {
                   <Avatar
                     alt="RubixAppartment"
                     sx={{ width: 140, height: 140 }}
-                    src="/images/RubixAppartment.png"
+                    src={require("../../assets/images/RubixAppartment.png")}
                   />
                   <Box sx={ViewPropertystyle.positionRelativeSx}>
                     <Typography
@@ -139,7 +144,7 @@ export default function ViewProperties() {
                     {propertyDetails.map((property, index) => (
                       <Grid key={index} item sm={12} md={4} lg={2}>
                         <InputLabel
-                          // className={classes.label}
+                          sx={ViewPropertystyle.label1Sx}
                           variant="standard"
                           htmlFor="Property-Description"
                         >
@@ -152,13 +157,12 @@ export default function ViewProperties() {
                     ))}
                     <Grid item sm={12} md={12} lg={12}>
                       <InputLabel
-                        //   className={classes.label}
                         variant="standard"
                         htmlFor="Property-Description"
                       >
                         {"Property Description"}
                       </InputLabel>
-                      <Typography variant="h6" component="h6">
+                      <Typography variant="h6" component="h6" marginTop={"8px"}>
                         {
                           "A while back I needed to count the amount of letters that a piece of text in an email template had (to avoid passing any character limits). Unfortunately, a street bike available at a starting price of Rs. 1,62,916 in India. It is available in 3 variants and 8 colours with top variant price starting from The Yamaha"
                         }
@@ -189,6 +193,7 @@ export default function ViewProperties() {
               <Grid container spacing={2} justifyContent="center">
                 <Grid item xs={10} sm={12} md={12} lg={4}>
                   <iframe
+                    title="map"
                     style={{
                       maxHeight: "195px",
                       maxWidth: "480px",
@@ -210,7 +215,7 @@ export default function ViewProperties() {
                       component="h6"
                       variant="body1"
                       sx={{
-                        font: "normal normal bold 14px/16px NunitoSans-Bold",
+                        font: "normal normal bold 14px/16px Nunito Sans",
                       }}
                     >
                       <LocationOnIcon fontSize="small" />
@@ -236,7 +241,7 @@ export default function ViewProperties() {
                     <Typography
                       component="h6"
                       sx={{
-                        font: "normal normal bold 14px/16px NunitoSans-Bold",
+                        font: "normal normal bold 14px/16px Nunito Sans",
                         margin: "1px 0 17px 0",
                       }}
                     >

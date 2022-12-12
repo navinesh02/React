@@ -1,4 +1,4 @@
-import { theme } from "../../theme";
+import { theme } from "../../utils/theme";
 
 export const DashboardStyle = {
   tableHeaderSx: {
@@ -9,7 +9,8 @@ export const DashboardStyle = {
       borderRadius: "3px",
       border: "3px",
       color: "#4E5A6B",
-      font: "normal normal 600 12px/16px NunitoSans-Regular",
+      font: "Nunito Sans",
+      fontSize: "12px",
     },
   },
 
@@ -23,16 +24,20 @@ export const DashboardStyle = {
     position: "fixed",
     bottom: 16,
     right: 16,
-    "& .MuiButtonBase-root": { backgroundColor: "#5078E1" },
+    "& .MuiButtonBase-root": {
+      backgroundColor: "#5078E1",
+      "&:hover": { backgroundColor: "#5078E1" },
+    },
   },
   tabSx: {
     "& .Mui-selected": {
       color: theme.palette.primary.light + " !important",
-      font: "normal normal 600 12px/16px NunitoSans-Regular",
+      font: "Nunito Sans",
+      fontWeight: "bold",
     },
     "& .MuiTab-root": {
       color: theme.palette.background.gray,
-      font: "normal normal bold 14px/19px NunitoSans-Bold !important",
+      font: "Nunito Sans",
       textTransform: "capitalize !important",
       // border: "2px solid "+theme.palette.primary.light
     },
@@ -44,29 +49,29 @@ export const DashboardStyle = {
   },
   tablerowSx: {
     "& td p": {
-      font: "normal normal 600 16px/16px NunitoSans-SemiBold",
+      font: "NunitoSans",
+      fontSize: "14px",
+      fontWeight: "700",
     },
   },
   cardSx1: {
-    [theme.breakpoints.between("xs", 'md')]: {
+    [theme.breakpoints.between("xs", "md")]: {
       width: "230px !important",
     },
   },
-  cardSx2:{
+  cardSx2: {
     [theme.breakpoints.only("xs")]: {
-      marginBottom:"40px",
+      marginBottom: "40px",
     },
   },
-  
-paperSx:{
-  display: { xs: "block",sm:'none',md:'none',lg:'none' },
-  position: "fixed",
-  zIndex:99
-  // backgroundColor: " #333"
 
-},
-bottomSx:{
-  backgroundColor:theme.palette.background.darkBg,
-
-}
+  paperSx: {
+    display: { xs: "block", sm: "none", md: "none", lg: "none" },
+    position: "fixed",
+    zIndex: 99,
+    // backgroundColor: " #333"
+  },
+  bottomSx: {
+    backgroundColor: theme.palette.background.darkBg,
+  },
 };

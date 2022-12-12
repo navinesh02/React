@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-import { useStyles } from "./Styles";
+import { Divider, Grid, Menu } from "@mui/material";
 import AppBar from "@mui/material/AppBar";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
-import Avatar from "@mui/material/Avatar";
-import { Headerstyle } from "./Styles";
-import { Divider, Grid, Menu } from "@mui/material";
+import React, { useState } from "react";
 import ProfileDisplay from "../profileDisplay";
+import { Headerstyle } from "./Styles";
+import bell from "../../assets/images/bell-icon.svg";
 
 export default function Header() {
-  // const [onHoverContent, setOnHoverContent] = useState(false);
   const [anchorEl, setAnchorEl] = useState(false);
   const open = anchorEl;
   const handleClick = (event) => {
@@ -44,7 +40,10 @@ export default function Header() {
               <Grid item>
                 <Grid container>
                   <Grid item>
-                    <img src="/images/DNTLogo.png" alt="logo" />
+                    <img
+                      src={require("../../assets/images/DNTLogo.png")}
+                      alt="logo"
+                    />
                   </Grid>
                   <Divider
                     // sx={Headerstyle.dividerSx}
@@ -71,6 +70,7 @@ export default function Header() {
                           sm: "inherit",
                           md: "inherit",
                           lg: "inherit",
+                          font: "Nunito Sans !important",
                         },
                         flexGrow: 1,
                         fontSize: 12,
@@ -85,7 +85,7 @@ export default function Header() {
                 <Grid container alignItems="center">
                   <Grid item>
                     <Box sx={Headerstyle.bellimg}>
-                      <img src="/images/bell-icon.svg" alt="DNTLogo" />
+                      <img src={bell} alt="DNTLogo" />
                     </Box>
                   </Grid>
                   <Divider
@@ -96,7 +96,10 @@ export default function Header() {
                   <Grid item>
                     <Box sx={Headerstyle.profileContainer}>
                       <Avatar sx={Headerstyle.avatarSx}>
-                        <img src="/images/profile2.png" alt="profile" />
+                        <img
+                          src={require("../../assets/images/profile2.png")}
+                          alt="profile"
+                        />
                       </Avatar>
                       <Box sx={Header.profiletextSx}>
                         <Typography sx={Headerstyle.nametextSx}>
@@ -106,12 +109,11 @@ export default function Header() {
                           Super Admin
                         </Typography>
                       </Box>
-                      <Box
-                        //  onMouseEnter={() => setOnHoverContent(true)}
-                        // onMouseLeave={() => setOnHoverContent(false)}
-                        onClick={handleClick}
-                      >
-                        <img src="/images/arrrow.png" alt="arrow" />
+                      <Box onClick={handleClick}>
+                        <img
+                          src={require("../../assets/images/arrrow.png")}
+                          alt="arrow"
+                        />
 
                         <Box>
                           {/* {onHoverContent === true && <ProfileDisplay />} */}
@@ -139,7 +141,7 @@ export default function Header() {
           vertical: "top",
           horizontal: "left",
         }}
-        sx={{padding:"0px !important"}}
+        sx={{ padding: "0px !important" }}
       >
         <ProfileDisplay />
       </Menu>

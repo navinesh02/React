@@ -38,11 +38,15 @@ export default function ProfileDisplay() {
       color: "#D471ff",
     },
   ];
+
   return (
     <Box sx={ProfileStyle.boxSx}>
       <Card sx={ProfileStyle.cardSx}>
         <Box display="flex" gap="8px">
-          <Avatar sx={{ width: 70, height: 70 }} src={"/images/profile2.png"} />
+          <Avatar
+            sx={{ width: 70, height: 70 }}
+            src={require("../../assets/images/profile2.png")}
+          />
           <Box>
             <Typography sx={ProfileStyle.profileSx}> Narayanan </Typography>
             <Typography sx={ProfileStyle.profiletext1Sx}>

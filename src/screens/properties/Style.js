@@ -1,4 +1,4 @@
-import { theme } from "../../theme";
+import { theme } from "../../utils/theme";
 export const PropertiesStyle = {
   cardSx: {
     margin: "18px 15px",
@@ -30,24 +30,26 @@ export const PropertiesStyle = {
       border: 0,
       borderRadius: "3px",
       color: "#4E5A6B",
-      font: "normal normal 600 12px/16px NunitoSans-Regular",
+      font: "Nunito Sans",
+      fontSize: "12px",
+      fontWeight: "600",
     },
   },
   tableRowSx: {
     "& td p": {
-      font: "normal normal 600 16px/16px NunitoSans-SemiBold",
+      font: "Nunito Sans",
+      fontSize: "14px",
+      fontWeight: "700",
     },
   },
-  paperSx: {
-    "& .MuiPaper-root.MuiPaper-elevation": {
-      boxShadow: "0px 1px 10px #0717411F !important",
-    },
-  },
+
   paperSx: {
     display: { xs: "block", sm: "none", md: "none", lg: "none" },
     position: "fixed",
     zIndex: 99,
-    // backgroundColor: " #333"
+    "& .MuiPaper-root.MuiPaper-elevation": {
+      boxShadow: "0px 1px 10px #0717411F !important",
+    },
   },
   bottomSx: {
     backgroundColor: theme.palette.background.darkBg,
@@ -60,7 +62,9 @@ export const PropertiesStyle = {
       padding: "2px 10px",
       color: "#071741",
       "& li": {
-        font: "normal normal 600 14px/19px NunitoSans-Bold !important",
+        font: "Nunito Sans !important",
+        fontSize: "14px",
+        fontWeight: 700,
         borderRadius: "12px",
         padding: "5px 5px",
       },

@@ -22,7 +22,8 @@ export const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "NunitoSans-Regular, sans-serif",
+    fontFamily: "Nunito Sans",
+
     h1: {
       fontSize: 48,
       fontWeight: 600,
@@ -36,10 +37,9 @@ export const theme = createTheme({
       margin: 0,
     },
     h3: {
-      fontSize: 32,
-      fontWeight: 600,
+      fontSize: 14,
+      fontWeight: 800,
       lineHeight: 1.5,
-      margin: 0,
     },
     h4: {
       fontSize: 24,
@@ -53,10 +53,10 @@ export const theme = createTheme({
     },
     h6: {
       fontSize: 14,
-      fontWeight: 600,
+      fontWeight: 700,
       lineHeight: 1.5,
     },
   },
 });
 
-export default {theme};
+// export default {theme};

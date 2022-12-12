@@ -1,32 +1,23 @@
-import Header from "../header/Header";
-import React from "react";
-import { styled, useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import CssBaseline from "@mui/material/CssBaseline";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import { Collapse } from "@mui/material";
+import Box from "@mui/material/Box";
+import Divider from "@mui/material/Divider";
+import MuiDrawer from "@mui/material/Drawer";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-import { Sidebarstyle } from "./Styles";
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import { styled, useTheme } from "@mui/material/styles";
+import Typography from "@mui/material/Typography";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Collapse } from "@mui/material";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
-
-// import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-// import ExpandLessIcon from '@mui/icons-material/ExpandLess';
+import { Sidebarstyle } from "./Styles";
+import lead from "../../assets/images/Leads.svg";
 import { useState } from "react";
 
 const drawerWidth = 240;
@@ -93,6 +84,9 @@ export default function Sidebar() {
 
   const handleDrawer = () => {
     setOpen(!open);
+    if (open) {
+      setOpenCollapse(false);
+    }
   };
 
   const [openCollapse, setOpenCollapse] = useState(false);
@@ -112,7 +106,7 @@ export default function Sidebar() {
     <Box>
       <Drawer
         variant="permanent"
-        sx={{ marginRight: "25px", ...Sidebarstyle.rootSx  }}
+        sx={{ marginRight: "25px", ...Sidebarstyle.rootSx }}
         open={open}
       >
         <DrawerHeader>
@@ -188,7 +182,7 @@ export default function Sidebar() {
                   justifyContent: "center",
                 }}
               >
-                <img src="/images/Leads.svg" alt="company" />
+                <img src={lead} alt="company" />
               </ListItemIcon>
               <ListItemText
                 primary={"Companies"}
@@ -202,7 +196,7 @@ export default function Sidebar() {
             <List component="div" disablePadding>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <img src="/images/Leads.svg" alt="company" />
+                  <img src={lead} alt="company" />
                 </ListItemIcon>
                 <ListItemText
                   onClick={() => {
@@ -215,14 +209,14 @@ export default function Sidebar() {
               </ListItemButton>
               <ListItemButton sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <img src="/images/Leads.svg" alt="company" />
+                  <img src={lead} alt="company" />
                 </ListItemIcon>
                 <ListItemText primary="Menu 2" sx={{ color: "#fff" }} />
                 {open ? <ExpandMore /> : ""}
               </ListItemButton>
               <ListItemButton onClick={handleClickSubCollapse} sx={{ pl: 4 }}>
                 <ListItemIcon>
-                  <img src="/images/Leads.svg" alt="company" />
+                  <img src={lead} alt="company" />
                 </ListItemIcon>
                 <ListItemText primary="Menu 3" sx={{ color: "#fff" }} />
                 {open ? openSubCollapse ? <ExpandLess /> : <ExpandMore /> : ""}

@@ -1,5 +1,4 @@
-import { color } from "@mui/system";
-import { theme } from "../../theme";
+import { theme } from "../../utils/theme";
 
 export const CreatePropertyStyle = {
   propertyimgSx: {
@@ -21,7 +20,9 @@ export const CreatePropertyStyle = {
       padding: "6px",
       display: "flex",
       margin: "auto",
-      font:"normal normal 600 14px/19px NunitoSans-Bold "
+      font: " Nunito Sans ",
+      fontSize: "13px",
+      fontWeight: "bold",
     },
   },
 
@@ -30,21 +31,17 @@ export const CreatePropertyStyle = {
     boxShadow: "0px 3px 3px #5C86CB2E",
     padding: "14px",
     minHeight: "270px",
+    font: "Nunito Sans !important",
   },
-  labelSx: {
-    marginBottom: "7px",
-    marginTop: "8px",
-  },
+  
   boxSx: {
     borderRadius: "12px",
     border: "1px solid #E4E8EE",
-    marginTop:"10px",
-    // padding:"2px 8px",
-    // padding:"12px",
+    marginTop: "10px",
+   
     "& div": {
       border: "0 !important",
       margin: "0",
-      // padding: "4px 8px",
     },
     "& .ql-header": {
       display: "none",
@@ -75,7 +72,6 @@ export const CreatePropertyStyle = {
     width: "100%",
   },
   cardSx1: {
-    // borderRadius: "0",
     boxShadow: "0px 3px 3px #5C86CB2E",
     borderRadius: "8px",
     padding: "14px",
@@ -86,18 +82,20 @@ export const CreatePropertyStyle = {
   saveBtnSx: {
     padding: "10px",
     width: "250px",
+    fontWeight: "bold",
+    fontSize: "14px",
   },
-  saveSx:{
-    backgroundColor:theme.palette.primary.light,
-    font:"NunitoSans-Regular"
-
+  saveSx: {
+    backgroundColor: theme.palette.primary.light,
+    font: "Nunito Sans",
+    fontWeight: "bold",
+    "&:hover": { backgroundColor: "#5078E1" },
   },
 
   endCard: {
     display: "flex",
     justifyContent: "flex-end",
-    // alignItems: "flex-end",
-    rowGap:"10px"
+    rowGap: "10px",
   },
   contactCardSx: {
     margin: "18px 0px 0px 10px ",
@@ -107,45 +105,46 @@ export const CreatePropertyStyle = {
     padding: "14px",
     width: "100%",
   },
-  toggleCheckSx:{
+  toggleCheckSx: {
     "& .MuiButtonBase-root": {
       borderRadius: "25px!important",
       height: "30px",
       width: "30px",
-      marginTop:"8px"
+      marginTop: "8px",
     },
-    "& .MuiToggleButton-root.Mui-selected":{
-      backgroundColor:"#5078E1",
-      color:"#fff"
-    }
+    "& .MuiToggleButton-root.Mui-selected": {
+      backgroundColor: "#5078E1",
+      color: "#fff",
+    },
   },
   labelSx: {
-    font: "normal normal 600 11px/16px NunitoSans-Regular !important",
+    font: "Nunito Sans !important",
+    fontSize: "12px",
     letterSpacing: "0.05rem",
     color: theme.palette.background.gray + " !important",
-    // marginBottom: "7px",
-    // marginTop: "8px",
+
   },
-  toggleBtnSx:{
+  toggleBtnSx: {
     "& .MuiButtonBase-root.MuiToggleButton-root": {
       borderRadius: "6px",
       border: "1px solid #E4E8EE",
       height: "38px",
       margin: "6px 4px 5px 5px",
-      font: "normal normal 600 11px/16px NunitoSans-bold !important",
-      color:"#333"
-
+      font: "Nunito Sans !important",
+      fontSize: "13px !important",
+      fontWeight: "bold",
+      color: "#333",
     },
-    "& .MuiToggleButton-root.Mui-selected":{
-      backgroundColor:"#5078E1",
-      color:"#fff",
-      font: "normal normal 600 11px/16px NunitoSans-bold !important",
 
-    }
+    "& .MuiToggleButton-root.Mui-selected": {
+      backgroundColor: "#5078E1",
+      color: "#fff",
+      fontWeight: "bold",
+      font: "Nunito Sans !important",
+      "&:hover": { backgroundColor: "#5078E1" },
+    },
   },
-  boxSx1:{
-    display: { xs: "none",sm:'none',md:'none',lg:'none' },
+  boxSx1: {
+    display: { xs: "none", sm: "none", md: "none", lg: "none" },
   },
-  
- 
 };

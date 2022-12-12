@@ -1,93 +1,41 @@
-import React from "react";
-import StatCard from "../../components/cards";
+import IconButton from "@material-ui/core/IconButton";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import SearchIcon from "@mui/icons-material/Search";
 import {
+  Box,
   Card,
   Grid,
-  Typography,
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  Divider,
+  Typography,
 } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import ChartCard from "../../components/chartCard/ChartCard";
-import { Box } from "@mui/material";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
-import PropTypes from "prop-types";
-import Tabs from "@mui/material/Tabs";
-import ListItem from "@mui/material/ListItem";
-import TextField from "@mui/material/TextField";
-import SearchIcon from "@mui/icons-material/Search";
-import IconButton from "@material-ui/core/IconButton";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import { DashboardStyle } from "./Styles";
-import SpeedDial from "@mui/material/SpeedDial";
-import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import DashboardIcon from "@mui/icons-material/Dashboard";
+import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-
-// import SearchIcon from "@material-ui/icons/Search";
-
+import Paper from "@mui/material/Paper";
+import SpeedDial from "@mui/material/SpeedDial";
+import SpeedDialIcon from "@mui/material/SpeedDialIcon";
+import { styled } from "@mui/material/styles";
 import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import TextField from "@mui/material/TextField";
+import PropTypes from "prop-types";
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import StatCard from "../../components/cards";
+import ChartCard from "../../components/chartCard/index";
+import { DashboardStyle } from "./Styles";
+import eye from "../../assets/images/eye.svg";
+import pencil from "../../assets/images/pencil.svg";
+import lead from "../../assets/images/Leads.svg";
+import { rows, data, chartDetails, table } from "../../utils/constant";
 
-const rows = [
-  createData("Water Leakage Repair", "Maintenance", "22 jan 22", "K-F01-U277"),
-  createData(
-    "Electricity Voltage Drop",
-    "Maintenance",
-    "22 jan 22",
-    "K-F01-U277"
-  ),
-  createData("Water Leakage Repair", "Maintenance", "22 jan 22", "K-F01-U277"),
-  createData(
-    "Electricity Voltage Drop",
-    "Maintenance",
-    "22 jan 22",
-    "K-F01-U277"
-  ),
-  createData("Water Leakage Repair", "Maintenance", "22 jan 22", "K-F01-U277"),
-  createData(
-    "Electricity Voltage Drop",
-    "Maintenance",
-    "22 jan 22",
-    "K-F01-U277"
-  ),
-];
-
-const table = [
-  createTd("Prop 011", "Tyons", "22", "02", "47%"),
-  createTd("Prop 012", "Rubix", "52", "14", "27%"),
-  createTd("Prop 013", "Phonix", "46", "34", "54%"),
-  createTd("Prop 014", "Thapar", "27", "76", "65%"),
-  createTd("Prop 015", "Marian", "29", "33", "23%"),
-  createTd("Prop 016", "Tyons", "43", "34", "34%"),
-  createTd("Prop 017", "Tyons", "87", "56", "21%"),
-  createTd("Prop 011", "Tyons", "22", "02", "47%"),
-  createTd("Prop 012", "Rubix", "52", "14", "27%"),
-  createTd("Prop 013", "Phonix", "46", "34", "54%"),
-];
-
-function createTd(
-  propertyId,
-  propertyName,
-  totelUnit,
-  occupeidUnit,
-  occupancy
-) {
-  return { propertyId, propertyName, totelUnit, occupeidUnit, occupancy };
-}
-function createData(name, type, date, id) {
-  return { name, type, date, id };
-}
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
@@ -119,70 +67,6 @@ function a11yProps(index) {
   };
 }
 
-export const chartDetails = [
-  {
-    name: "Property Types",
-    chartType: "PieChart",
-    data: [
-      ["Task", "Hours per Day"],
-      ["Vacant", 25],
-      ["Occupied", 25],
-      ["Reserved", 50],
-      ["Listed", 25],
-    ],
-    option: {
-      legend: "bottom",
-      colors: ["#58D0E0", "#FF9340", "#5AC782", "#F3E137"],
-    },
-  },
-  {
-    name: "Unit Category",
-    chartType: "Bar",
-    data: [
-      ["Task", " "],
-      ["Vacant", 25],
-      ["Occupied", 25],
-      ["Reserved", 50],
-      ["Listed", 25],
-    ],
-    option: {
-      colors: ["#5AC782"],
-      legend: "bottom",
-    },
-  },
-  {
-    name: "Vacant Unit By Property",
-    chartType: "BarChart",
-    data: [
-      ["Task", "No of Vacants"],
-      ["Rubix", 10],
-      ["Eat", 22],
-      ["Commute", 32],
-      ["Watch TV", 21],
-      ["Sleep", 7],
-    ],
-    option: {
-      colors: ["#58D0E0"],
-      legend: "bottom",
-    },
-  },
-  {
-    name: "Total Area",
-    chartType: "PieChart",
-    data: [
-      ["Task", "Hours per Day"],
-      ["Commerical", 20],
-      ["Residential", 25],
-    ],
-    option: {
-      legend: "bottom",
-      colors: ["#5AC782", "#F3E137"],
-
-      pieHole: 0.4,
-      is3D: false,
-    },
-  },
-];
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -198,51 +82,9 @@ export default function Dashboard() {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const data = [
-    {
-      count: 14,
-      icon: "/images/card/activeProperty.png",
-      dis: "Active Properties",
-    },
-    {
-      count: "06",
-      icon: "/images/card/block.png",
-      dis: "Blocks",
-    },
-    {
-      count: 12,
-      icon: "/images/card/floors.png",
-      dis: "Floors",
-    },
-    {
-      count: 14,
-      icon: "/images/card/residents.png",
-      dis: "Residents",
-    },
-    {
-      count: 10,
-      icon: "/images/card/actiiveUnit.png",
-      dis: "Active unit",
-    },
-    {
-      count: "03",
-      icon: "/images/card/vacant.png",
-      dis: "Vaccant",
-    },
-    {
-      count: 17,
-      icon: "/images/card/reserved.png",
-      dis: "Reserved",
-    },
-    {
-      count: 45,
-      icon: "/images/card/occupied.png",
-      dis: "Occupied",
-    },
-  ];
 
   return (
-    <Box  style={{ padding:" 20px 20px" }}>
+    <Box style={{ padding: " 20px 20px" }}>
       <Grid container spacing={2}>
         {data?.map((_item) => {
           return (
@@ -271,40 +113,39 @@ export default function Dashboard() {
                   padding: 0.5,
                   backgroundColor: "#F5F7FA",
                   height: "50px",
-                  ...DashboardStyle.cardSx1
+                  ...DashboardStyle.cardSx1,
                 }}
               >
                 <Grid container>
-                     <Grid item xs={6} sm={6} lg={5} md={6}>
-                     <Box>
-                  <Typography variant="h6" component="h6">
-                    General Request
-                  </Typography>
-                  <Typography variant="h6" component="h6">
-                    12
-                  </Typography>
-                </Box>
+                  <Grid item xs={6} sm={6} lg={5} md={6}>
+                    <Box>
+                      <Typography variant="h6" component="h6">
+                        General Request
+                      </Typography>
+                      <Typography variant="h6" component="h6">
+                        12
+                      </Typography>
+                    </Box>
+                  </Grid>
+                  <Grid item xs={6} sm={6} lg={5} md={6}>
+                    <Box
+                      sx={{
+                        borderRight: "1px solid #5C86CB2E",
+                        // marginTop: "9px",
+                        // marginBottom: "9px",
+                      }}
+                    />
+                    <Box>
+                      <Typography variant="h6" component="h6">
+                        Maintenance
+                      </Typography>
+                      <Typography variant="h6" component="h6">
+                        15
+                      </Typography>
+                    </Box>
+                  </Grid>
                 </Grid>
-                <Grid item xs={6} sm={6} lg={5} md={6}>
-
-                <Box
-                  sx={{
-                    borderRight: "1px solid #5C86CB2E",
-                    // marginTop: "9px",
-                    // marginBottom: "9px",
-                  }}
-                />
-                <Box>
-                  <Typography variant="h6" component="h6">
-                    Maintenance
-                  </Typography>
-                  <Typography variant="h6" component="h6">
-                    15
-                  </Typography>
-                </Box>
-              </Grid>
-                </Grid>
-               </Card>
+              </Card>
               <Box sx={{ width: "100%" }}>
                 <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
                   <Tabs
@@ -403,10 +244,10 @@ export default function Dashboard() {
                                 </Typography>
                               </TableCell>
                               <TableCell sx={{ width: "40px" }}>
-                                <img src="/images/pencil.svg" alt="pencil" />
+                                <img src={pencil} alt="pencil" />
                               </TableCell>
                               <TableCell sx={{ width: "40px" }}>
-                                <img src="/images/eye.svg" alt="pencil" />
+                                <img src={eye} alt="eyeimg" />
                               </TableCell>
                             </TableRow>
                           ))}
@@ -422,8 +263,14 @@ export default function Dashboard() {
               </Box>
             </Item>
           </Grid>
-          <Grid item  xs={12} lg={6} md={6} sm={6}>
-            <Item sx={{ overflowY: "hidden", height: "425px",...DashboardStyle.cardSx2 }}>
+          <Grid item xs={12} lg={6} md={6} sm={6}>
+            <Item
+              sx={{
+                overflowY: "hidden",
+                height: "425px",
+                ...DashboardStyle.cardSx2,
+              }}
+            >
               <Typography
                 variant="h6"
                 component="h5"
@@ -505,11 +352,11 @@ export default function Dashboard() {
               color: "#fff",
               backgroundColor: "#5078E1",
               height: "39px",
-              borderRadius:"23px",
+              borderRadius: "23px",
               marginTop: "7px",
               maxWidth: "37px",
-              minWidth:"10px",
-              marginRight:"34px",
+              minWidth: "10px",
+              marginRight: "34px",
               justifyContent: "center",
             }}
             label="Recents"
@@ -517,29 +364,26 @@ export default function Dashboard() {
             onClick={() => {
               navigate("/user/dashboard");
             }}
-           
           />
           {/* <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} /> */}
           <ListItemIcon
-                sx={{
-                  color: "#fff",
+            sx={{
+              color: "#fff",
               height: "39px",
-              borderRadius:"23px",
+              borderRadius: "23px",
               marginTop: "7px",
               maxWidth: "37px",
-              minWidth:"10px",
+              minWidth: "10px",
               justifyContent: "center",
             }}
             onClick={() => {
               navigate("/user/createproperty");
             }}
-              >
-                <img src="/images/Leads.svg" alt="company" />
-              </ListItemIcon>
+          >
+            <img src={lead} alt="company" />
+          </ListItemIcon>
         </BottomNavigation>
       </Paper>
-    
     </Box>
-    
   );
 }

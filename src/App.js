@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@mui/material";
-import AppRoute from "./AppRoute";
-import { theme } from "./theme";
+import AppRoute from "./Router/index";
+import { theme } from "./utils/theme";
  
 export const App = () => {
   return (

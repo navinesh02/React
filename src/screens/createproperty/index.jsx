@@ -1,32 +1,29 @@
-import React from "react";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import CheckIcon from "@mui/icons-material/Check";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import {
-  Stack,
-  Card,
-  Typography,
-  IconButton,
   Box,
-  Grid,
-  ListItem,
   Button,
+  Card,
+  Grid,
+  IconButton,
+  InputLabel,
+  ListItem,
+  Stack,
   ToggleButton,
   ToggleButtonGroup,
-  Input,
-  TextField,
-  InputLabel,
+  Typography,
 } from "@mui/material";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { CreatePropertyStyle } from "./style";
-import { useRef, useState } from "react";
-import InputText from "../../components/input/InputText";
-import CustomSelect from "../../components/customselect/CustomSelect";
+import React, { useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import CheckOutlined from "@mui/icons-material/CheckOutlined";
 import { useNavigate } from "react-router-dom";
-import CheckIcon from "@mui/icons-material/Check";
-import BasicAlerts from "../../components/alert/alert";
-import Sidebar from "../../components/sidebar/Sidebar";
+import BasicAlerts from "../../components/alert/index";
+import CustomSelect from "../../components/customSelect";
+import InputText from "../../components/input/index";
+import Sidebar from "../../components/sidebar";
+import { CreatePropertyStyle } from "./style";
+import { selectList } from "../../utils/constant";
 
 export default function CreateProperty() {
   const [value, setValue] = useState(
@@ -41,53 +38,15 @@ export default function CreateProperty() {
     console.log(newPublicList);
     setpublicList(newPublicList);
   };
-  // const [openAlert, setOpenAlert] = useState(false);
   const [open, setOpen] = React.useState(false);
 
   const saveProperty = (value) => {
     setOpen(value);
-    // navigate("/user/property")
     setTimeout(() => {
       setOpen(false);
       navigate("/user/property");
     }, 5000);
   };
-
-  const selectList = [
-    {
-      label: "Company Name",
-      defaultValue: "Company Name",
-      options: [
-        { key: "Company Name", value: "Company Name" },
-        { key: "12", value: "we" },
-      ],
-    },
-    {
-      label: "Property Name",
-      defaultValue: "Rubix Appartment",
-      options: [
-        { key: "Rubix Appartment", value: "Rubix Appartment" },
-        { key: "MVP Appartment", value: "MVP Appartment" },
-      ],
-    },
-    {
-      label: "Payment Period",
-      defaultValue: "Daily",
-      options: [
-        { key: "Daily", value: "Daily" },
-        { key: "Weekly", value: "Weekly" },
-        { key: "Monthly", value: "Monthly" },
-      ],
-    },
-    {
-      label: "Status",
-      defaultValue: "Active",
-      options: [
-        { key: "Active", value: "Active" },
-        { key: "InActive", value: "InActive" },
-      ],
-    },
-  ];
 
   return (
     <Box>
@@ -117,15 +76,17 @@ export default function CreateProperty() {
               <Typography
                 variant="h6"
                 component="h6"
-                sx={{ fontSize: "14px", color: "#4E5A6B", mt: "9px" }}
+                sx={{ fontSize: "13px", color: "#4E5A6B", mt: "5px" }}
                 align="center"
               >
                 PROPERTY IMAGE
               </Typography>
               <Card sx={CreatePropertyStyle.propertyimgSx}>
-                <img src="/images/propertyimg.png" />
+                <img
+                  src={require("../../assets/images/propertyimg.png")}
+                  alt="propimg"
+                />
               </Card>
-
               <Button sx={CreatePropertyStyle.uploadBtnSx}>Upload Image</Button>
             </Card>
           </Grid>
@@ -134,7 +95,7 @@ export default function CreateProperty() {
               <Typography
                 variant="h6"
                 component="h6"
-                sx={{ fontSize: "14px", color: "#4E5A6B" }}
+                sx={{ fontSize: "13px", color: "#4E5A6B" }}
               >
                 PROPERTY DETAILS
               </Typography>
@@ -146,10 +107,7 @@ export default function CreateProperty() {
               >
                 {/* <InputText /> */}
                 {selectList.map((select, index) => (
-                  <Grid key={index}  item xs={12} md={6} lg={3}>
-                    {/* <InputText
-                      label={select.label}
-                    /> */}
+                  <Grid key={index} item xs={12} md={6} lg={3}>
                     <CustomSelect
                       label={select.label}
                       options={select.options}
@@ -166,7 +124,6 @@ export default function CreateProperty() {
               </Box>
             </Card>
           </Grid>
-
           <Card mt={3} sx={CreatePropertyStyle.cardSx1}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={12} md={4} lg={2}>
@@ -221,7 +178,7 @@ export default function CreateProperty() {
                       variant="body1"
                       sx={{
                         color: "#98A0AC",
-                        font: "normal normal normal 12px/16px NunitoSans-Regular",
+                        font: "Nunito Sans",
                       }}
                     >
                       sq.Ft
@@ -333,6 +290,7 @@ export default function CreateProperty() {
                   width="100%"
                   height="450"
                   loading="lazy"
+                  title="map"
                   referrerpolicy="no-referrer-when-downgrade"
                 ></iframe>
               </Grid>
@@ -350,21 +308,21 @@ export default function CreateProperty() {
                     <InputText
                       label="Address Line 1"
                       placeholder="Enter Address"
-                      defaultValue="A1 Road"
+                      defaultValue="East Cost Road"
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={3} lg={5}>
                     <InputText
                       label="Address Line 2"
                       placeholder="Enter Address"
-                      defaultValue="A1 Road"
+                      defaultValue="Main Road"
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={3} lg={3}>
                     <InputText
                       label="Landmark"
                       placeholder="Enter Landmark"
-                      defaultValue="React js"
+                      defaultValue="Yaa Mohideen Biriyani"
                     />
                   </Grid>
                   <Grid item xs={12} sm={12} md={3} lg={3}>
@@ -407,7 +365,6 @@ export default function CreateProperty() {
               </Grid>
             </Grid>
           </Card>
-
           <Card mt={3} sx={CreatePropertyStyle.contactCardSx}>
             <Typography
               variant="h6"
@@ -421,7 +378,7 @@ export default function CreateProperty() {
                 <InputText
                   label="Business Phone"
                   placeholder="Enter Business Phone"
-                  defaultValue="226089001"
+                  defaultValue="22607978"
                   type="number"
                   startAdornment={
                     <Box>
@@ -448,7 +405,7 @@ export default function CreateProperty() {
                 <InputText
                   label="Mobile Phone"
                   placeholder="Enter Mobile Phone"
-                  defaultValue="9857246887"
+                  defaultValue="9876543211"
                   type="number"
                   startAdornment={
                     <>
@@ -476,7 +433,7 @@ export default function CreateProperty() {
                   label="Website"
                   type="url"
                   placeholder="Enter Website Link"
-                  defaultValue="www.example.com"
+                  defaultValue="www.paofficial.com"
                 />
               </Grid>
               <Grid item xs={12} sm={12} md={12} lg={3}>
@@ -491,7 +448,6 @@ export default function CreateProperty() {
           </Card>
         </Grid>
       </Box>
-
       <Card sx={CreatePropertyStyle.cardSx}>
         <Stack sx={CreatePropertyStyle.endCard} direction="row">
           <ListItem sx={CreatePropertyStyle.saveBtnSx}>
@@ -499,17 +455,15 @@ export default function CreateProperty() {
               onClick={() => navigate("/user/dashboard")}
               fullWidth={true}
               variant="outlined"
-              sx={{ marginRight: "20px" }}
+              sx={{ marginRight: "20px", fontWeight: "bold", fontSize: "14px" }}
             >
               Cancel
             </Button>
-
             <Button
               sx={CreatePropertyStyle.saveSx}
               fullWidth={true}
               variant="contained"
               disabled={open}
-              // variant="outlined"
               onClick={() => {
                 saveProperty(true);
               }}
@@ -525,9 +479,9 @@ export default function CreateProperty() {
         message={"Property created successfully"}
         severity={"success"}
       />
-      <Box  sx={CreatePropertyStyle.boxSx1}>
-      <Sidebar />
-
+      <Box sx={CreatePropertyStyle.boxSx1}>
+        <Sidebar />
       </Box>
-      </Box>  );
+    </Box>
+  );
 }

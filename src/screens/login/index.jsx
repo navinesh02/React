@@ -1,21 +1,12 @@
-import React from "react";
-import createTheme from "@mui/material/styles";
-import { useState } from "react";
-import { loginstyle } from "./Style";
-import {
-  Button,
-  Card,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-  Paper,
-  Box,
-} from "@mui/material";
+import { Box, Button, Grid, TextField, Typography } from "@mui/material";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { loginstyle } from "./style";
+import circle from "../../assets/images/circle.svg";
+import circledark from "../../assets/images/circleDark.svg";
+import doted from "../../assets/images/doted.svg";
 
 const Login = () => {
-  // const classes = useStyles();
   const navigate = useNavigate();
   const [data, setData] = useState({
     email: "",
@@ -53,11 +44,6 @@ const Login = () => {
     setData({ ...data, error });
     return isValid;
   };
-  // const handlesubmit = () => {
-  //   if (validateForm()) {
-  //   }
-  // };
-
   return (
     <div className="root">
       <Box sx={loginstyle.containerSx}>
@@ -76,23 +62,23 @@ const Login = () => {
             <Box sx={loginstyle.circleImgGroupSx}>
               <img
                 style={loginstyle.circleImgTopSx}
-                src="images/circle.svg"
+                src={circle}
                 alt="circleImgTop"
               />
               <img
                 style={loginstyle.circleImgCenterSx}
-                src="images/circleDark.svg"
+                src={circledark}
                 alt="circleImgCenter"
               />
               <img
                 style={loginstyle.circleImgbottomSx}
-                src="images/circle.svg"
+                src={circle}
                 alt="circleImgbottom"
               />
             </Box>
             <img
               style={loginstyle.buldingImgbottomSx}
-              src="images/bulding-crop.png"
+              src={require("../../assets/images/bulding-crop.png")}
               alt="buldingImgbottom"
             />
           </Grid>
@@ -127,7 +113,7 @@ const Login = () => {
                       ...loginstyle.dotedImgTopSx,
                       display: { xs: "none" },
                     }}
-                    src="images/doted.svg"
+                    src={doted}
                     alt="dotedImgTop"
                   />
                 </Box>
@@ -135,7 +121,7 @@ const Login = () => {
                 <Box sx={loginstyle.signInCardSx}>
                   <Typography
                     sx={{ ...loginstyle.signInSx, fontWeight: "bold" }}
-                    variant="h6"
+                    variant="h4"
                   >
                     Sign In
                   </Typography>
@@ -144,7 +130,7 @@ const Login = () => {
                       sx={{ width: "100%" }}
                       label="Mobile Number / Email ID"
                       placeholder="Enter Mobile Number / Email ID"
-                      helperText={data?.error?.email}
+                      helperText={data?.error?.email ? data?.error?.email : " "}
                       onChange={(e) => handleChange("email", e.target.value)}
                       type={"email"}
                       error={data?.error?.email ? true : false}
@@ -152,10 +138,10 @@ const Login = () => {
                   </Box>
                   <Box sx={loginstyle.inputBarSx}>
                     <TextField
-                      sx={{ mt: 4, width: "100%" }}
+                      sx={{ mt: 2, width: "100%" }}
                       label="Enter Password"
                       placeholder="Enter your password"
-                      helperText={data?.error?.password}
+                      helperText={data?.error?.password ? data?.error?.password : " "}
                       onChange={(e) => handleChange("password", e.target.value)}
                       error={data?.error?.password ? true : false}
                       type={"password"}
@@ -164,16 +150,20 @@ const Login = () => {
                   <Typography
                     sx={{
                       ...loginstyle.forgetPasswordSx,
-                      mt: 2,
+                      mt: 1,
                       fontSize: 12,
                       fontWeight: "bold",
                     }}
                   >
                     Did you forget your password? <span>Click Here</span>
                   </Typography>
-                  <Box sx={{ ...loginstyle.poweredBySx, mt: 0 }}>
-                    <span sx={{ fontSize: 10 }}>Powered by</span>
-                    <img src="images/logo.png" alt="logo" /> Property Automate
+                  <Box sx={{ ...loginstyle.BoxpoweredBySx, mt: 2 }}>
+                    <span style={{ fontSize: "10px" }}>Powered by</span>
+                    <img
+                      src={require("../../assets/images/logo.png")}
+                      alt="logo"
+                    />{" "}
+                    Property Automate
                   </Box>
                   <Button
                     sx={{ ...loginstyle.loginBtn, Margintop: "20px" }}
@@ -190,7 +180,7 @@ const Login = () => {
                       ...loginstyle.dotedImgBottomSx,
                       display: { xs: "none" },
                     }}
-                    src="images/doted.svg"
+                    src={doted}
                     alt="dotedImgBottom"
                   />
                 </Box>

@@ -1,11 +1,11 @@
 import IconButton from "@material-ui/core/IconButton";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import SearchIcon from "@mui/icons-material/Search";
 import {
-  Box,
   Card,
+  Divider,
   Grid,
+  ListItem,
   Stack,
   Table,
   TableBody,
@@ -15,27 +15,19 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import {
-  ListItem,
-  Divider,
-} from "@mui/material";
-import Fade from "@mui/material/Fade";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import TextField from "@mui/material/TextField";
 import React from "react";
-import { PropertiesStyle } from "./Style";
 import { useNavigate } from "react-router-dom";
-// import Floors from 'public/images/card/floors.png'
+import { PropertiesStyle } from "./Style";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import ArchiveIcon from "@mui/icons-material/Archive";
-import DashboardIcon from "@mui/icons-material/Dashboard";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Paper from "@mui/material/Paper";
-import InputText from "../../components/input/InputText";
+import InputText from "../../components/input/index";
+import lead from "../../assets/images/Leads.svg";
+import filter from "../../assets/images/filter.svg";
 
 export default function Properties() {
   const table = [
@@ -183,18 +175,24 @@ export default function Properties() {
           <Card sx={PropertiesStyle.cardSx}>
             <Grid container spacing={2}>
               <Grid item xs={10}>
-                <ListItem sx={{ padding: "5px", width:"190px", ...PropertiesStyle.textSx}}>
+                <ListItem
+                  sx={{
+                    padding: "5px",
+                    width: "190px",
+                    ...PropertiesStyle.textSx,
+                  }}
+                >
                   <InputText
                     type="text"
                     placeholder={"Search Properties"}
+                    font={"Nunito Sans"}
                     startAdornment={<SearchIcon sx={{ color: "#98A0AC" }} />}
                   />
                 </ListItem>
               </Grid>
               <Grid item xs={2}>
                 <ListItem sx={{ padding: "5px", justifyContent: "flex-end" }}>
-                 
-                <img src="/images/filter.svg" alt={"fillter"} />
+                  <img src={filter} alt={"fillter"} />
                 </ListItem>
               </Grid>
             </Grid>
@@ -214,23 +212,18 @@ export default function Properties() {
                 <TableBody>
                   {table.map((row, index) => (
                     <TableRow sx={PropertiesStyle.tableRowSx} key={index}>
-                      <TableCell scope="row"
+                      <TableCell
+                        scope="row"
                         onClick={() => {
                           navigate("/user/viewproperty");
-                        }}>
-                        <Typography
-                          variant="body1"
-                          component="p"
-                        >
+                        }}
+                      >
+                        <Typography variant="body1" component="p">
                           {row.propertyId}
                         </Typography>
                       </TableCell>
                       <TableCell>
-                        <Typography
-                          variant="body1"
-                          component="p"
-                         
-                        >
+                        <Typography variant="body1" component="p">
                           {row.propertyName}
                         </Typography>
                       </TableCell>
@@ -361,7 +354,7 @@ export default function Properties() {
               navigate("/user/createproperty");
             }}
           >
-            <img src="/images/Leads.svg" alt="company" />
+            <img src={lead} alt="company" />
           </ListItemIcon>
         </BottomNavigation>
       </Paper>

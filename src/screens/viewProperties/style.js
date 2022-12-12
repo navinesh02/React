@@ -1,4 +1,4 @@
-import { theme } from "../../theme";
+import { theme } from "../../utils/theme";
 
 export const ViewPropertystyle = {
   mainCardSx: {
@@ -40,10 +40,10 @@ export const ViewPropertystyle = {
     margin: "5px 10px 0px 3px",
     borderRadius: "8px",
     padding: "14px",
-    height:"180px",
+    height: "180px",
     [theme.breakpoints.only("xs")]: {
       height: "200px",
-      width:"165px"
+      width: "165px",
     },
   },
 
@@ -53,12 +53,19 @@ export const ViewPropertystyle = {
     margin: "5px 10px 10px 3px",
     borderRadius: "8px",
     padding: "14px",
-    height:"180px",
+    height: "180px",
     [theme.breakpoints.only("xs")]: {
       height: "300px",
-      width:"160px",
-      // marginRight:"10px"
-
+      width: "160px",
+    },
+  },
+  label1Sx: {
+    font: " Nunito Sans ",
+    fontSize: "15px",
+  },
+  label2Sx: {
+    "& .MuiTypography-root": {
+      marginTop: "6px !important ",
     },
   },
 };
