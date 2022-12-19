@@ -158,3 +158,5 @@ Reassign a constant object
 * If you find yourself keeping track of multiple pieces of state that rely on complex logic, useReducer may be useful.
 * syntax : `useReducer(<reducer>, <initialState>)`
 
+### useRef
+* The useRef Hook allows you to persist values between renders. It can be used to store a mutable value that does not cause a re-render when updated.
